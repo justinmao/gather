@@ -8,7 +8,8 @@ class UserTest < ActiveSupport::TestCase
       first_name: "Testy",
       last_name: "Jones",
       password: "ENCRYPTME",
-      salt: "PEPPER")
+      password_confirmation: "ENCRYPTME",
+      )
   end
 
   test "unmodified user should be valid" do
@@ -57,5 +58,7 @@ class UserTest < ActiveSupport::TestCase
     @user.save
     assert_equal mixed_case_email.downcase, @user.reload.email
   end
+
+
 
 end
