@@ -25,4 +25,28 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
+  test "correctly formatted emails should be allowed" do
+    valid_emails = %w[testy@mctest.com example@example.co.uk
+      popper-locker.polka-dotter@country-fy.us]
+    valid_emails.each do |valid_email|
+      @user.email = valid_email
+      assert @user.valid?, "#{valid_email.inspect} should be valid"
+    end
+  end
+
+  test "incorrectly formatted emails should not be allowed" do
+    invalid_emails = %w[testy testymctest.com testy@mctest.
+      example@example,co.uk example#example.co.uk e^ample@example.co.uk
+      popper-locker@country_fy.us polka-dotter@country+fy.us]
+    invalid_emails.each do |invalid_email|
+      @user.email = invalid_email
+      assert_not @user.valid?, "#{invalid_email.inspect} should not be valid"
+    end
+  end
+
+  test "emails should be unique" do
+    @user.save
+    assert_not @user.dup.valid?
+  end
+
 end
