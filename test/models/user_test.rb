@@ -7,8 +7,7 @@ class UserTest < ActiveSupport::TestCase
       email: "testy@mctest.com",
       first_name: "Testy",
       last_name: "Jones",
-      password: "ENCRYPTME",
-      password_confirmation: "ENCRYPTME",
+      password: "ENCRYPTME"
       )
   end
 
@@ -59,6 +58,11 @@ class UserTest < ActiveSupport::TestCase
     assert_equal mixed_case_email.downcase, @user.reload.email
   end
 
-
+  test "passwords should be encrypted" do
+    password_confirmation = "ENCRYPTME"
+    @user.password = password_confirmation
+    @user.save
+    assert_not_equal password_confirmation, @user.reload
+  end
 
 end
