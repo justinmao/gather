@@ -3,7 +3,7 @@ class CreateJoinTableTimeslotUser < ActiveRecord::Migration[5.0]
     create_join_table :timeslots, :users do |t|
       t.index :timeslot_id
       t.index :user_id
-      t.integer :value
+      t.integer :boolean
     end
   end
 end

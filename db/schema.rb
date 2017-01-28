@@ -13,7 +13,6 @@
 ActiveRecord::Schema.define(version: 20170128002723) do
 
   create_table "events", force: :cascade do |t|
-    t.integer  "event_id"
     t.integer  "owner_id"
     t.text     "description"
     t.datetime "start_time"
@@ -30,7 +29,6 @@ ActiveRecord::Schema.define(version: 20170128002723) do
   end
 
   create_table "timeslots", force: :cascade do |t|
-    t.integer  "timeslot_id"
     t.integer  "event_id"
     t.datetime "time"
   end
@@ -38,13 +36,12 @@ ActiveRecord::Schema.define(version: 20170128002723) do
   create_table "timeslots_users", id: false, force: :cascade do |t|
     t.integer "timeslot_id", null: false
     t.integer "user_id",     null: false
-    t.integer "value"
+    t.integer "boolean"
     t.index ["timeslot_id"], name: "index_timeslots_users_on_timeslot_id"
     t.index ["user_id"], name: "index_timeslots_users_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.integer  "user_id"
     t.string   "email"
     t.string   "firstname"
     t.string   "lastname"
