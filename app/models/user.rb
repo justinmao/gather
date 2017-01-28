@@ -11,6 +11,6 @@ class User < ApplicationRecord
     presence: true,
     length: { maximum: 255 },
     format: { with: VALID_EMAIL_REGEX },
-    uniqueness: true
+    uniqueness: { case_sensitive false }
 
 end
