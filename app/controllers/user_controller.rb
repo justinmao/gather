@@ -1,18 +1,21 @@
 class UserController < ApplicationController
 
+  def list
+    @users = User.all
+  end
+
   def new
     @user = User.new
   end
 
   def create
-    @user = User.new(params.require(:user).permit(
+    @user = User.new(params.require(:users).permit(
       :email,
       :password,
       :first_name,
-      :last_name,
-      :salt))
+      :last_name))
     @user.save
-    redirect_to root_path
+    redirect_to action: 'list'
   end
 
 end

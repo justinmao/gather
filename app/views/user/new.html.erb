@@ -1,0 +1,15 @@
+<h1>User Registration</h1>
+
+<%= form_tag action: 'create' do %>
+  <p><label for = 'user_email'>Email</label>:
+    <%= text_field 'users', 'email' %></p>
+  <p><label for = 'user_first_name'>First Name</label>:
+    <%= text_field 'users', 'first_name' %></p>
+  <p><label for = 'user_last_name'>Last Name</label>:
+    <%= text_field 'users', 'last_name' %></p>
+  <p><label for = 'user_password'>Password</label>:
+    <%= text_field 'users', 'password' %></p>
+  <%= submit_tag 'Register' %>
+<% end -%>
+
+<%= link_to 'Back', {action: 'list'} %>

@@ -1,3 +1,9 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get 'user/list'
+  get 'user/new'
+  post 'user/create'
+  get 'event/list'
+  post 'event/create'
+  patch 'event/update'
+  get 'event/view'
 end
